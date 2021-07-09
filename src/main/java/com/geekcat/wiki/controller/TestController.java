@@ -1,8 +1,7 @@
 package com.geekcat.wiki.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 // @RestController用于返回字符串的控制器，其实质为@Controller+@ResponseBody
@@ -17,7 +16,12 @@ public class TestController {
 //    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     // 状态码405表示页面不支持当前请求
     @GetMapping("/hello")
-    public String Hello() {
+    public String hello() {
         return "Hello World";
+    }
+
+    @PostMapping("/hello/post")
+    public String helloPost(String name) {
+        return "Hello Post " + name;
     }
 }
