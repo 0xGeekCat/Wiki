@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    // 读取配置项test.hello，通过冒号引入默认值
-    @Value("${test.hello:test}")
+    // 读取配置项test.hello
+    @Value("${test.hello}")
     private String testHello;
 
     // Restful风格的HTTP请求对应的就是增POST、删DELETE、改PUT、查GET
