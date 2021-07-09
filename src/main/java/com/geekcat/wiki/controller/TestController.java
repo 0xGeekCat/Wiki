@@ -1,5 +1,6 @@
 package com.geekcat.wiki.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
+    // 读取配置项test.hello，通过冒号引入默认值
+    @Value("${test.hello:test}")
+    private String testHello;
+
     // Restful风格的HTTP请求对应的就是增POST、删DELETE、改PUT、查GET
     // @RequestMapping用于映射请求，即指定控制器可以处理哪些URL请求，其支持所有的请求方式，也可以指定请求
 //    @RequestMapping("/hello")
@@ -17,7 +22,7 @@ public class TestController {
     // 状态码405表示页面不支持当前请求
     @GetMapping("/hello")
     public String hello() {
-        return "Hello World";
+        return "Hello World " + testHello;
     }
 
     @PostMapping("/hello/post")
