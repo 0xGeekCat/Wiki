@@ -1,6 +1,7 @@
 package com.geekcat.wiki.controller;
 
 import com.geekcat.wiki.domain.Ebook;
+import com.geekcat.wiki.resp.CommonResp;
 import com.geekcat.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,10 @@ public class EbookController {
     // 每个接口如果都要包含/ebook过于繁琐，可以使用@RequestMapping简化
 //    @GetMapping("/ebook/list")
     @GetMapping("/list")
-    public List<Ebook> list() {
-        return ebookService.list();
+    public CommonResp list() {
+        CommonResp<List<Ebook>> resp = new CommonResp<>();
+        List<Ebook> list = ebookService.list();
+        resp.setContent(list);
+        return resp;
     }
 }
